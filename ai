@@ -26,5 +26,5 @@ if [ "$R" == "null" ]; then
 	echo ""
 	exit 1
 else
-	echo $R
+	echo -e "$R"
 fi

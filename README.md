@@ -16,7 +16,18 @@ chmod a+x install.sh
 ./install.sh
 ```
 
-## Install 'ai' command-line tool
+## How to use it
+### 'ai' command-line tool
+Usage:
+```ai "<prompt>"```
+Examples:
+```ai "Write a haiku about the Linux terminal"```
+```ai "Create a CSV file with 10 items containing name, age and height" > people.csv```
+```ai "Sort the following data by age" $(cat people.csv)```
+### 'ai' Vim plugin
+In *command-mode* enter AI (i.e. :AI<enter>), and enter your prompt.  You'll then be asked whether you want to [O]verwrite the current contents, or [A]ppend the generated response to the end of the current text.
+
+## Install the 'ai' command-line tool manually
 Copy the ai script in this repo to somewhere on the $PATH (e.g. /usr/bin/) and make it executable.
 ```
 chmod a+x ai
@@ -27,21 +38,13 @@ Once that's done, edit your ```~/.bashrc``` to automatically populate the OPENAI
 export OPENAI_API_KEY="<Your API key>"
 ```
 You'll need to restart your shell session to pick up the change.
-Test the tool by executing it, passing the prompt as the only argument:
-```
-ai "Generate a CSV file with 5 entries and the fields: firtname, lastname and age"
-```
-You can also use this tool to run a prompt against a file.  An example showing this is below.  This checks the ai script for any errors:
-```
-ai "Check the following script for errors: `cat ai`
-```
-## Install the Vim plugin
-First download the vim-plug plug-in:
+## Install the Vim plugin mahually
+First download the *vim-plug* plug-in:
 ```
 curl -sfLo ~/.vim/autoload/plug.vim --create-dirs \
 	https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
-Copy the ai-plugin plug-in to the ```~/.vim/``` drectory
+Copy the *ai-plugin* plug-in to the ```~/.vim/``` drectory
 ```
 cp -r ai-plugin ~/.vim/
 ```
