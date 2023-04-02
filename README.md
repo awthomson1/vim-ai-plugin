@@ -83,5 +83,5 @@ call plug#end()
 ### Why are some of the results from ChatGPT not what I expected?
 Every prompt is made in the context of the currently open file.  If you want to generate a response totally unrelated to the contents of the open file, be sure to delete everything, or open a new (empty) file.
 
-### Why does my query fail, complaining about invalid JSON
-An effort is made to escape some problematic characters in the file, but it's still relatively easy to break the JSON structure of the request to the ChatGPT API.  This will hopefully be imporved over time.
+### Why does my query fail, complaining about invalid JSON?
+An effort is made to escape some problematic characters in the file, but it's still relatively easy to break the JSON structure of the request to the ChatGPT API.  This will hopefully be improved over time.
