@@ -1,15 +1,19 @@
 # vim-ai-plugin
+
 A ChatGPT/OpenAI plugin for Vim and Bash
 
 ## About
+
 These are two helper utilities for Linux terminal users:
-* A ChatGPT command-line tool: this lets you make ChatGPT calls straight from the terminal.
-* A Vim plugin: this uses the above tool and lets you provide prompts to ChatGPT based on the currently opened file.
+* *A ChatGPT command-line tool:* this lets you make ChatGPT calls straight from the terminal.
+* *A Vim plugin:* this uses the above tool and lets you provide prompts to ChatGPT based on the currently opened file.
 
 ## Pre-Requisites
-* An OpenAI API Key (if you don't have one, you'll need to sign up for one here: TODO)
+
+* An OpenAI API Key (if you don't have one, you'll need to sign up for one here: https://chat.openai.com/)
 
 ## Quick-Start
+
 Run the ```install.sh``` script to automatically do all the steps below
 ```
 chmod a+x install.sh
@@ -17,17 +21,29 @@ chmod a+x install.sh
 ```
 
 ## How to use it
+
 ### 'ai' command-line tool
+
 Usage:
-```ai "<prompt>"```
+```
+ai "<prompt>"
+```
 Examples:
-```ai "Write a haiku about the Linux terminal"```
-```ai "Create a CSV file with 10 items containing name, age and height" > people.csv```
-```ai "Sort the following data by age" $(cat people.csv)```
+```
+ai "Write a haiku about the Linux terminal"
+```
+```
+ai "Create a CSV file with 10 items containing name, age and height" > people.csv
+```
+```
+ai "Sort the following data by age" $(cat people.csv)
+```
 ### 'ai' Vim plugin
-In *command-mode* enter AI (i.e. :AI<enter>), and enter your prompt.  You'll then be asked whether you want to [O]verwrite the current contents, or [A]ppend the generated response to the end of the current text.
+
+In *command-mode* enter AI (i.e. :AI&lt;enter&gt;and enter your prompt.  You'll then be asked whether you want to [O]verwrite the current contents, or [A]ppend the generated response to the end of the current text.
 
 ## Install the 'ai' command-line tool manually
+
 Copy the ai script in this repo to somewhere on the $PATH (e.g. /usr/bin/) and make it executable.
 ```
 chmod a+x ai
@@ -38,7 +54,8 @@ Once that's done, edit your ```~/.bashrc``` to automatically populate the OPENAI
 export OPENAI_API_KEY="<Your API key>"
 ```
 You'll need to restart your shell session to pick up the change.
-## Install the Vim plugin mahually
+
+## Install the Vim plugin manually
 First download the *vim-plug* plug-in:
 ```
 curl -sfLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -60,3 +77,11 @@ Plug '~/.vim/ai-plugin'
 
 call plug#end()
 ```
+
+## FAQ
+
+### Why are some of the results from ChatGPT not what I expected?
+Every prompt is made in the context of the currently open file.  If you want to generate a response totally unrelated to the contents of the open file, be sure to delete everything, or open a new (empty) file.
+
+### Why does my query fail, complaining about invalid JSON
+An effort is made to escape some problematic characters in the file, but it's still relatively easy to break the JSON structure of the request to the ChatGPT API.  This will hopefully be imporved over time.

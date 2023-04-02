@@ -11,7 +11,7 @@ command! -nargs=0 AI call s:AI()
 
 function! s:AI(...)
 	let prompt = input("Enter prompt: ")
-	let ovefrwrite = input("[A]ppend or [O]verwrite [A]: ")
+	let overwrite = input("[A]ppend or [O]verwrite [A]: ")
 	echo "\nQuerying ChatGPT..."
 	let body_text = getline(1, '$')
 	let body1 = join(body_text,' ')
@@ -19,6 +19,9 @@ function! s:AI(...)
 	let command = 'ai "'.prompt.'\n-----------\n'.body2.'"'
 	let my_var = system(command)
 	let x = split(my_var,'\n')
+	if stridx(overwrite, "O")==0
+		:%delete
+	endif
 	for xx in x
 		call append('$', xx)
 	endfor
